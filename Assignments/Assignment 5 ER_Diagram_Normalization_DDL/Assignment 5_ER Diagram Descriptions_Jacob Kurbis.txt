@@ -1,0 +1,65 @@
+Jacob Kurbis (Z1945650)
+CSCI 466 Section 1
+ER Diagram Assignment 5 Descriptions 
+
+
+1). Entity: PERSON- The entity that represents an individual associated with the organization, whether they are an employee or a client.
+    IS-A Inheritance- Generalization and Overlapped Subtypes
+    Attributes: NAME- The person's name
+                PHONE #- The person's phone number
+                ADDRESS- The person's physical address
+                EMAIL- The person's email
+    Identifier: NAME(Primary Key and Underlined)
+    Relationship(s):None
+
+2). Entity: EMPLOYEE(Inherits from PERSON)- The entity that represents an employee who works for the Serenity Springs Day Spa.
+    Attributes: PAY RATE- The employee's pay rate
+		JOB TITLE- The employee's job title at Serenity Springs Day Spa
+		(All attributes inherited by PERSON too)
+    Identifier: NAME(Primary Key and Underlined, Foreign Key from PERSON)- The name of the employee
+    Relationship(s): SCHEDULED- The work schedule for Employees(One to Many employees can be scheduled)
+		     SPECIALIZES IN- The service the employee's specialty pertains to(There are One to Many Employees who have a specialty)
+		     PREFERS- The preferred employee by the client for a particular service(For every one service that is preferred by one client, there is One to One Employees)
+		     APPOINTMENT- The appointment made by the client for a chosen employee, service, and date(For every one service, one client, and one date and time for an appointment there is One to One assigned Employees)
+
+3). Entity: CLIENT(Inherits from PERSON)- The entity that represents a client who uses the services of the Serenity Springs Day Spa.
+    Attributes: None(Besides all the ones inherited from PERSON)
+    Identifier: NAME(Primary Key and Underlined, Foreign Key from PERSON)- The name of the client
+    Relationship(s): PREFERS- The preferred employee by the client for a particular service(For every one service and one employee, there is One to Many Clients that are preferring those employee's service)
+	             APPOINTMENT- The appointment made by the client for a chosen employee, service, and date(For every one service, one employee, and one date and time for an appointment there is One to One Clients that booked it)
+
+4). Entity: SERVICE- The entity representing the types of services provided by the Serenity Springs Day Spa.
+    Attributes: TYPE- The type of services the Day Spa provides(ie Hair, Makeup, Manicures, Massages, Waxes) 
+                PRICE- The price of the service
+    Identifier: TYPE(Primary Key and Underlined)
+		NAME(Foreign Key from EMPLOYEE)
+    Relationship(s): PREFERS- The preferred employee by the client for a particular service(For every one client and one employee, there is One to One Services that are preferred by that client)
+	             SPECIALIZES IN- SPECIALIZES IN- The service the employee's specialty pertains to(There are One to One Services an employee has a specialty in)
+		     APPOINTMENT- The appointment made by the client for a chosen employee, service, and date(For every one employee, one client, and one date and time for an appointment there is One to Many Services)
+
+5). Entity: DATE- The entity representing the date and time for the employee's work schedule and client's appointments
+    Attributes: None
+    Identifier: DATE
+    Relationship(s): SCHEDULED- Represents the scheduled work dates for an employee(One to Many dates an employee can be scheduled)
+		     APPOINTMENT- The appointment made by the client for a chosen employee, service, and date(For every one service, one client, and one employee for an appointment there is One to One Date/Times)
+
+6). Relationship: SCHEDULED- Represents the scheduled work dates for an employee
+    Attributes: None
+    Primary Key(s): NAME(Foreign Key too)- The name of the employee
+	            DATE- The date and time for the employee's work schedule
+
+7). Relationship: SPECIALIZES IN- The service the employee's specialty pertains to
+    Attributes: None
+    Primary Key(s): NAME(Foreign Key too)- The name of the employee
+    Foreign Key(s): TYPE- The type of services the Day Spa provides(ie Hair, Makeup, Manicures, Massages, Waxes)
+
+8). Relationship: PREFERS- The preferred employee by the client for a particular service
+    Attributes: None
+    Primary Key(s): NAME(Foreign Key too)- The name of the client
+		    TYPE(Foreign Key too)- The type of services the Day Spa provides(ie Hair, Makeup, Manicures, Massages, Waxes)
+
+9). Relationship: APPOINTMENT- The appointment made by the client for a chosen employee, service, and date
+    Attributes: None
+    Primary Key(s): NAME(Foreign Key too)- The name of the client
+		    DATE- The date and time for the client's appointments
+		    TYPE(Foreign Key too)- The type of services the Day Spa provides(ie Hair, Makeup, Manicures, Massages, Waxes)

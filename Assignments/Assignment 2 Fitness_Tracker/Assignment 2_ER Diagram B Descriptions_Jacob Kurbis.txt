@@ -1,0 +1,58 @@
+Jacob Kurbis (Z1945650)
+CSCI 466 Section 1
+ER Diagram Assignment B Descriptions 
+
+
+1). Entity: ACCOUNT- The entity that represents the user's account for the fitness tracker database
+    Attributes: USER_ID- A unique ID for each user(Primary Key)
+    Identifier: USER_ID
+    Relationship(s): LOGS WEIGHT- A user's account logs weight over date and time
+		     LOGS WORKOUT- A user's account logs workout sessions that stores duration and intensity of workout
+                     MEAL- A user's account is related with meals they log
+
+2). Entity: DATE 1-The entity that represents the date related to weight logging
+    Attributes: TIME- The time on the date(10 AM, 2PM, 3:37 PM, etc.)
+    Identifier: TIME
+    Relationship(s): LOGS WEIGHT- Records related to weight are logged with date
+    Cardinalities: One to many dates can be logged
+
+3). Entity: WORKOUT- The entity that represents types of workouts
+    Attributes: WORKOUT TYPE- Type of workout the user does
+    Identifier: WORKOUT TYPE
+    Relationship(s): LOGS WORKOUT- Records of workouts are logged with this relationship
+
+4). Entity: DATE 2- The entity that representing a date and time related to workout logging
+    Attributes: TIME- The time on the date(10 AM, 2PM, 3:37 PM, etc.)
+    Identifier: TIME
+    Relationship(s): LOGS WORKOUT- Records related to workouts are logged with this date
+    Cardinalities: One to many dates can be logged
+
+5). Entity: DATE 3- The entity that representing a date and time related to meal logging
+    Attributes: TIME- The time on the date(10 AM, 2PM, 3:37 PM, etc.)
+    Identifier: TIME
+    Relationship(s): MEAL- Records of meals are logged with this date
+    Cardinalities: One to many dates can be logged
+
+6). Entity: FOOD/BEVERAGE- The entity representing various foods and or beverages
+    Attributes: NAME- The name of each food/beverage
+		PROTEIN- How much protein the food/beverage has
+		FATS- How much fat the food/beverage has
+		CALORIES- How many calories the food/beverage has
+		SUGARS- How much sugar the food/beverage has
+		CARBS- How many carbohydrates the food/beverage has
+    Identifier: NAME
+    Relationship(s): MEAL- Foods/beverages are related with meals they log
+		     CONVERSION- How much of the food/beverage will be stored in the serving size
+		     CONTAINS- How much of a certain food/beverage is recommended daily  
+
+7). Entity: MICRONUTRIENTS/CHEMICALS- The entity representing micronutrients or chemicals in foods and beverages 
+    Attributes: NAME-The name of the micronutrient/chemical
+    Identifier: NAME
+    Relationship(s): CONTAINS- How many micronutrients/chemicals are recommended daily
+
+
+8). Entity: UNIT-The entity that represents unit types(grams,Tbsp,ounces,quarts, etc) 
+    Attributes: TYPE- The type of unit(grams,Tbsp,ounces,quarts, etc)
+		QUANTITY- How much of the unit
+    Identifier: TYPE
+    Relationship(s): CONVERSION- Conversion factors between unit types for storing serving sizes
